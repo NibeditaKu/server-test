@@ -25,13 +25,17 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
 
           script: |
-            which uv
             
+
             cd ~/server-test
 
             git pull origin main
 
             source .venv/bin/activate
+
+            export PATH="/home/ubuntu/.local/bin:$PATH"
+
+            which uv
 
             uv sync
 
